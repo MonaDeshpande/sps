@@ -10,10 +10,10 @@
     <h2>Enter your data here</h2>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 offset-md-3" >
+            <div class="col-md-6,  offset-md-3" >
                 <div class="card">
                     <div class="card-body">
-                        <form class="mb3" action = "add_students" method="post">
+                        <form action ="/add_students" method="POST">
                             {% csrf_token %}
                             <div><label for="firstname"> First Name</label>
                                 <input type="text" id="firstname" class="form-control" name="firstname" placeholder="Enter your first name">
@@ -24,8 +24,7 @@
                             </div>
                             <div>
                                 <label for="student_id"> student_id</label>
-                            <input type="text" id="student_id" class="form-control" name="student_id" placeholder="Enter your id">
-                            <hr>
+                                <input type="text" id="student_id" class="form-control" name="student_id" placeholder="Enter your id">
 
                             </div>
                             <div class="container">
