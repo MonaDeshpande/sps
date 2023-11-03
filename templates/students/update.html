@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Students</h1>
-    <h2>Enter your data here</h2>
+    <h2>Update Data</h2>
     <div class="container">
         <div class="row">
             <div class="col-md-6,  offset-md-3" >
@@ -16,15 +16,15 @@
                         <form action ="/add_students" method="POST">
                             {% csrf_token %}
                             <div><label for="firstname"> First Name</label>
-                                <input type="text" id="firstname" class="form-control" name="firstname" value ={{student.firstname}}>
+                                <input type="text" id="firstname" class="form-control" name="firstname" value ={{students.firstname}}>
                             </div>
                             <div>
                                 <label for="lastname"> Last Name</label>
-                                <input type="text" id="lastname" class="form-control" name="lastname"  value ={{lastname}}>
+                                <input type="text" id="lastname" class="form-control" name="lastname"  value ={{students.lastname}}>
                             </div>
                             <div>
                                 <label for="student_id"> student_id</label>
-                                <input type="text" id="student_id" class="form-control" name="student_id"  value ={{student_id}}>
+                                <input type="text" id="student_id" class="form-control" name="student_id"  value ={{students.student_id}}>
 
                             </div>
                             <div class="container">
