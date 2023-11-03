@@ -35,12 +35,19 @@ def add_students(request):
 
 def delete_student(request, student_id):
     print(student_id)
-    student=Students.objects.get(pk=student_id)
-    print(student)
-    student.delete()
+    x=Students.objects.get(pk=student_id)
+    print(x)
+    x.delete()
     return HttpResponse("Student removed successfully")
-    
 
+def update_student(request, student_id):
+    student = Students.objects.get(pk=student_id)
+    return render(request, "students/update.html", {
+        'students':student
+    })
+    
+def do_update(request):
+    return redirect("students/home/")
     
 
 
