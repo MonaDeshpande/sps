@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upadate student's data</title>
-</head>
+</head> 
 <body>
     <h1>Students</h1>
     <h2>Update Data</h2>
@@ -13,7 +13,7 @@
             <div class="col-md-6,  offset-md-3" >
                 <div class="card">
                     <div class="card-body">
-                        <form action ="/add_students" method="POST">
+                        <form action= "do-update/{{student.id}}" method="POST">
                             {% csrf_token %}
                             <div><label for="firstname"> First Name</label>
                                 <input type="text" id="firstname" class="form-control" name="firstname" value ={{students.firstname}}>

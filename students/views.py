@@ -46,8 +46,25 @@ def update_student(request, student_id):
         'students':student
     })
     
-def do_update(request):
-    return redirect("students/home/")
+def do_update(request,student_id):
+    if request.method =="POST":
+        #print("data is coming")
+        #fetch data
+        student_firstname = request.POST.get("firstname")
+        student_lastname = request.POST.get("lastname")
+        student_id_temp = request.POST.get("student_id")
+        print(student_id)
+
+        s = Students.objects.get(pk=student_id)
+
+        #Create model object and set data
+        s.firstname =student_firstname
+        s.lastname = student_lastname
+        s.student_id = student_id_temp
+
+        #save data
+        s.save()
+    return HttpResponse("Updated Succesfuly")
     
 
 
