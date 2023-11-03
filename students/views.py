@@ -1,4 +1,4 @@
-#from django.urls import HttpResponse
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Students
 
@@ -32,6 +32,14 @@ def add_students(request):
         
      print("data is not coming")
      return render(request, "students/students_data.html", {})
+
+def delete_student(request, student_id):
+    print(student_id)
+    student=Students.objects.get(pk=student_id)
+    print(student)
+    student.delete()
+    return HttpResponse("Student removed successfully")
+    
 
     
 

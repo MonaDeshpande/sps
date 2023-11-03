@@ -8,8 +8,8 @@
 <body>
     <h1> This is home page</h1>
     <div class="container">
-        <button 
-        href = '/sps/templates/add_students' class="btn btn primary"> Add students</button>
+        <!-- <button 
+        href = '/sps/templates/add_students' class="btn btn primary"> Add students</button> -->
         <a href="/students_data" class="btn btn primary"> Add students></a>
     </div>
     <div class="container">
@@ -24,6 +24,7 @@
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Student_id</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,9 +35,12 @@
                                     <td>{{s.firstname}}</td>
                                     <td>{{s.lastname}}</td>
                                     <td>{{s.student_id}}</td>
-                                    <td></td>
+                                    <td>
+                                        <a href="delete-student/{{s.student_id}}">DELETE</a>
+                                        <a href="/sps/students/update_student{{s.student_id}}">UPDATE</a>   
+                                    </td>
                                 </tr>   
-                                {% endfor %}                            
+                                {% endfor %}                         
                             </tbody>
                         </table>
                     </div>
