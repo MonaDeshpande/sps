@@ -13,7 +13,7 @@
             <div class="col-md-6,  offset-md-3" >
                 <div class="card">
                     <div class="card-body">
-                        <form action= "/do-update/{{students.id}}" method="POST">
+                        <form action= "/students/do-update/{{students.id}}" method="POST">
                             {% csrf_token %}
                             <div><label for="firstname"> First Name</label>
                                 <input type="text" id="firstname" class="form-control" name="firstname" value ={{students.firstname}}>

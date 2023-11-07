@@ -11,7 +11,7 @@
     <div class="container">
         <!-- <button 
         href = '/sps/templates/add_students' class="btn btn primary"> Add students</button> -->
-        <a class="btn btn-primary" href="/students_data" role="button">Add Student</a>
+        <a class="btn btn-primary" href="/students/students_data" role="button">Add Student</a>
         <br>
         <!-- <a href="/students_data" class="btn btn primary"> Add students></a> -->
     </div>
@@ -39,8 +39,8 @@
                                     <td>{{s.lastname}}</td>
                                     <td>{{s.student_id}}</td>
                                     <td>
-                                        <a href="delete-student/{{s.id}}">DELETE</a>
-                                        <a href="update-student/{{s.id}}">UPDATE</a>   
+                                        <a href="/students/delete-student/{{s.id}}">DELETE</a>
+                                        <a href="/students/update-student/{{s.id}}">UPDATE</a>   
                                     </td>
                                 </tr>   
                                 {% endfor %}                         

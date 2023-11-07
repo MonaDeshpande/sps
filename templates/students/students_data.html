@@ -13,7 +13,7 @@
             <div class="col-md-6,  offset-md-3" >
                 <div class="card">
                     <div class="card-body">
-                        <form action ="/add_students" method="POST">
+                        <form action ="/students/add_students/" method="POST">
                             {% csrf_token %}
                             <div><label for="firstname"> First Name</label>
                                 <input type="text" id="firstname" class="form-control" name="firstname" placeholder="Enter your first name">

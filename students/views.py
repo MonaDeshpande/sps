@@ -29,16 +29,17 @@ def add_students(request):
 
         #save data
         s.save()
+        return redirect("/students/home/")
         
      print("data is not coming")
-     return render(request, "students/students_data.html", {})
+     return render(request, "students/add_student.html", {})
 
 def delete_student(request, student_id):
     print(student_id)
     x=Students.objects.get(pk=student_id)
     print(x)
     x.delete()
-    return HttpResponse("Student removed successfully")
+    return redirect("/students/home/")
 
 def update_student(request, student_id):
     students = Students.objects.get(pk=student_id)
@@ -65,7 +66,8 @@ def do_update(request, student_id):
 
         #save data
         s.save()
-    return HttpResponse("Updated Succesfuly")
+    
+    return redirect("/students/home/")
     
 
 
