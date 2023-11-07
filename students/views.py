@@ -53,8 +53,8 @@ def add_students(request):
 
         #save data
         s.save()
-        return render (request, "/students/home.html")
-        
+        return redirect ("/students/home/")
+     
      print("data is not coming")
      return render(request, "students/add_student.html", {})
 

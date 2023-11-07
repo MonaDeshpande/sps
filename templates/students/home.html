@@ -34,7 +34,6 @@
                                     <th>Action</th>
                                     <th>PCB</th>
                                     <th>PCM</th>
-                                    <th>Preference</th>
 
                                 </tr>
                             </thead>
@@ -55,8 +54,8 @@
                                         <a href="/students/delete-student/{{s.id}}">DELETE</a>
                                         <a href="/students/update-student/{{s.id}}">UPDATE</a>   
                                     </td>
-                                    <td>{{pcb}}<td>
-                                    <td>{{pcm}}<td>
+                                    <td>{{s.pcb}}<td>
+                                    <td>{{s.pcm}}<td>
                                 </tr>   
                                 {% endfor %}                         
                             </tbody>
