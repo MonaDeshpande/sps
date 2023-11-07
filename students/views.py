@@ -13,12 +13,31 @@ def students_data(request):
     return render (request, "students/students_data.html", {})
 
 def add_students(request):
+     global phy
+     global chem
+     global bio
+     global maths
      if request.method =="POST":
         #print("data is coming")
         #fetch data
         student_firstname = request.POST.get("firstname")
         student_lastname = request.POST.get("lastname")
         student_id = request.POST.get("student_id")
+        phy = request.POST.get("phy")
+        chem = request.POST.get("chem")
+        bio = request.POST.get("bio")
+        maths = request.POST.get("maths")
+
+        def percentage(a, b, c):
+            percentage= ((int(a)+int(b)+int(c))/3)
+            return percentage
+        
+        pcb = percentage(phy, chem, bio)
+        pcm = percentage(phy, chem, maths)
+        
+        data ={"pcm": pcm,
+               "pcb": pcb,
+               }
         print(student_id)
 
         #Create model object and set data
@@ -26,10 +45,15 @@ def add_students(request):
         s.firstname =student_firstname
         s.lastname = student_lastname
         s.student_id = student_id
+        s.phy=phy
+        s.chem =chem
+        s.maths =maths
+        s.pcb = pcb
+        s.pcm =pcm
 
         #save data
         s.save()
-        return redirect("/students/home/")
+        return render (request, "/students/home.html")
         
      print("data is not coming")
      return render(request, "students/add_student.html", {})

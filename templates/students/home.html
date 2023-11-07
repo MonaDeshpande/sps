@@ -27,7 +27,15 @@
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Student_id</th>
+                                    <th>Physics</th>
+                                    <th>Chemistry</th>
+                                    <th>Biology</th>
+                                    <th>Maths</th>
                                     <th>Action</th>
+                                    <th>PCB</th>
+                                    <th>PCM</th>
+                                    <th>Preference</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,10 +46,17 @@
                                     <td>{{s.firstname}}</td>
                                     <td>{{s.lastname}}</td>
                                     <td>{{s.student_id}}</td>
+                                    <td>{{s.phy}}</td>
+                                    <td>{{s.chem}}</td>
+                                    <td>{{s.bio}}</td>
+                                    <td>{{s.maths}}</td>
+                                
                                     <td>
                                         <a href="/students/delete-student/{{s.id}}">DELETE</a>
                                         <a href="/students/update-student/{{s.id}}">UPDATE</a>   
                                     </td>
+                                    <td>{{pcb}}<td>
+                                    <td>{{pcm}}<td>
                                 </tr>   
                                 {% endfor %}                         
                             </tbody>
