@@ -48,6 +48,7 @@ def add_students(request):
         s.phy=phy
         s.chem =chem
         s.maths =maths
+        s.bio =bio
         s.pcb = pcb
         s.pcm =pcm
 
@@ -79,6 +80,23 @@ def do_update(request, student_id):
         student_firstname = request.POST.get("firstname")
         student_lastname = request.POST.get("lastname")
         student_id_temp = request.POST.get("student_id")
+        phy = request.POST.get("phy")
+        chem = request.POST.get("chem")
+        bio = request.POST.get("bio")
+        maths = request.POST.get("maths")
+
+        def percentage(a, b, c):
+            percentage= ((int(a)+int(b)+int(c))/3)
+            return percentage
+        
+        pcb = percentage(phy, chem, bio)
+        pcm = percentage(phy, chem, maths)
+        
+        data ={"pcm": pcm,
+               "pcb": pcb,
+               }
+        print(student_id)
+
         print(student_id)
 
         s = Students.objects.get(pk=student_id)
@@ -87,6 +105,12 @@ def do_update(request, student_id):
         s.firstname =student_firstname
         s.lastname = student_lastname
         s.student_id = student_id_temp
+        s.phy=phy
+        s.chem =chem
+        s.maths =maths
+        s.bio =bio
+        s.pcb = pcb
+        s.pcm =pcm
 
         #save data
         s.save()
