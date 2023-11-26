@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from .form import administrator_login_form
 from .models import administrator_login
-from django .views import View
+from django.views import View
 
 # Create your views here.
 def home(request):
@@ -18,6 +18,7 @@ def add_administrator(request):
         admin_lastname = request.POST.get("lastname")
         admin_id = request.POST.get("student_id")
         image= request.POST.get("image")
+        emailid =request.POST.get("email")
         password = request.POST.get("password")
         reenter = request.POST.get("reenter")
 
@@ -27,6 +28,7 @@ def add_administrator(request):
         a.lastname = admin_lastname
         a.admin_id = admin_id
         a.image = image
+        a.email_id =emailid
         a.password = password
         a.reenter_password = reenter      
 
@@ -36,7 +38,7 @@ def add_administrator(request):
 
 class formView(View):
     def get(self, request):
-        form =administrator_login_form
-        return render(request, '/python_quiz/Admin_login.html', {'form':form} )
+        form =administrator_login_form()
+        return render(request, 'python_quiz/Admin_login.html', {'form':form} )
 
 

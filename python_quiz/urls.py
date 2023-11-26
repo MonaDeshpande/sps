@@ -9,5 +9,5 @@ urlpatterns = [
     path('home/', home),
     path('admin_login/', admin_login),
     path('add_administrator/', add_administrator),
-    path('admin/', views.administrator_form_register.view.as_view(), name = 'home'),
+    path('admin/', views.formView.as_view(), name = 'home'),
 ]+ static (settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
