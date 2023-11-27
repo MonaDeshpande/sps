@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     # 'sps',
     'students',
     'python_quiz',
-    'python_Projects'
+    # 'python_Projects'
 ]
 
 MIDDLEWARE = [

@@ -11,7 +11,7 @@ def home(request):
 def admin_login(request):
     return render (request, "python_quiz/Admin_login.html", {})
 
-def add_administrator(request):
+# def add_administrator(request):
     print("received request")
     if request.method =="POST":
         admin_firstname = request.POST.get("firstname")
