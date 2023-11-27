@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import *
+from django.http import HttpResponse
+# from .models import *
 from .form import administrator_login_form
 from .models import administrator_login
 from django.views import View
+from django.shortcuts import render
 
 # Create your views here.
 def home(request):
@@ -39,6 +41,23 @@ def admin_login(request):
 class formView(View):
     def get(self, request):
         form =administrator_login_form()
-        return render(request, 'python_quiz/Admin_login.html', {'form':form} )
+        # print(form.as_p())
+        return render(request, "python_quiz/Admin_login.html", {'form':form} )
+    
+ 
+# def form_view(request):
+#     HttpResponse("Render request initiated")
+#     context ={}
+ 
+#     # create object of form
+#     form = administrator_login(request.POST or None, request.FILES or None)
+     
+#     # check if form data is valid
+#     if form.is_valid():
+#         # save the form data to model
+#         form.save()
+ 
+#     context['form']= form
+#     return render(request, "python_quiz/Admin_login.html", context)
 
 
