@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import modelForm
+# from forms import Mo
 from .models import tempModel
 
 class tempForm(forms.ModelForm):
