@@ -23,5 +23,7 @@ urlpatterns = [
     path('', home),
     path('students/', include('students.urls')),
     path('python_quiz/', include('python_quiz.urls')),
+    path('temp/', include('temp.urls')),
+
     # path('python_Projects/', include('python_Projects.urls')),
 ]

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # 'sps',
     'students',
     'python_quiz',
+    # 'temp',
     # 'python_Projects'
 ]
 
