@@ -6,7 +6,7 @@ class tempForm(forms.ModelForm):
     class Meta:
         model = tempModel
         fields="__all__"
-
+        
 
 
 

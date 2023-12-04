@@ -12,29 +12,27 @@
     <h2 class= "text-center">Enter your data here</h2>
     <div class="container">
         <div class="row">
-            <div class="col-sm-8">
-                <form action="" method="post">
-                    {% csrf_token %}
-                
-                        {{ form.as_table }}
-                
-                    <input type="submit" value="Submit" class="btn btn-Primary">
-                   
-                    <!-- {% for fm in form %}
-                    <div class="form-group mb-3">
-                        {{fm.label_tag}}{{fm}} <small class="text-danger"> {{fm.errors|striptags}} </small>
+            <div class="col-md-5 offset-md-3">
+                <div class="card bg-Primary-dark text-black" >
+                    <div class="card-body">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                                <!-- {{ form.as_table }} -->
+                            {% for fm in form %}
+                            <div class="form-group mb-3">
+                                {{fm.label_tag}}  {{fm}} <small class="text-danger"> {{fm.errors|striptags}} </small>
+                            </div>
+                            {% endfor %}
+                            
+                            {% if form.non_field_errors %}
+                                {% for error in non_field_errors %}
+                                    <p class="alert alert-danger my-3">{{error}}</p>
+                                {% endfor %}
+                            {% endif %}
+                            <input type="submit" value="Submit" class="btn btn-Primary">
                     </div>
-                    {% endfor %} -->
-                    
-                    <!-- {% if form.non_field_errors %}
-                        {% for error in non_field_errors %}
-                            <p class="alert alert-danger my-3">{{error}}</p>
-                        {% endfor %}
-                    {% endif %} -->
-
-
+                </div>
                 </form>
-
             </div>
         </div>
     </div>  
