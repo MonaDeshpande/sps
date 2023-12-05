@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Details</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Admin_id</th>
+                                    <th>Image</th>
+                                    <th>email_id</th>
+                                    <th>Action</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for administrator_detail in administrator_details %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{administrator_detail.firstname}}</td>         
+                                    <td>{{administrator_detail.lastname}}</td>
+                                    <td>{{administrator_detail.admin_id}}</td>
+                                    <td>{{administrator_detail.image}}</td>
+                                    <td>{{administrator_detail.email_id}}</td>
+                                        
+                        
+                                    <td>
+                                        <a href="/python_quiz/delete_admin/{{administrator_detail.admin_id}}">DELETE</a>
+                                        <a href="/python_quiz/update_admin/{{a.id}}">UPDATE</a>   
+                                        <hr> 
+                                    </td>
+                                </tr>   
+                                {% endfor %}                         
+                            </tbody>                         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -3,7 +3,7 @@ from .models import administrator_login
 
 # Register your models here.
 class administratorAdmin(admin.ModelAdmin):
-    list_display= ('firstname', 'lastname', 'admin_id')
+    list_display= ('firstname', 'lastname', 'admin_id', 'image', 'email_id', 'password')
     list_editable= ('lastname', 'admin_id')
 
 
