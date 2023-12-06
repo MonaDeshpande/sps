@@ -32,10 +32,18 @@ def admin_details(request):
 
 def delete_admin(request, admin_id):
     print(admin_id)
-    x=administrator_login.objects.get(pk=admin_id)
+    x=administrator_login.objects.get(admin_id=admin_id)
     print(x)
     x.delete()
     return redirect("/python_quiz/home/")
+
+def update_admin(request, admin_id):
+    data = administrator_login.objects.get(admin_id=admin_id)
+
+    form = administrator_login_form(instance=data)
+    context = {'form': form}
+    return render(request, 'python_quiz/Admin_login.html', context)
+
 
 
 
