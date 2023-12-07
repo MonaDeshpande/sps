@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-# from django.http import HttpResponse
+from django.http import HttpResponse
 # from .models import *
-from .forms import administrator_login_form
-from .models import administrator_login
+from .forms import administrator_login_form, administrator_sign_form
+from .models import administrator_login,administrator_signin
 # from django.views import View
 
 # Create your views here.
@@ -16,15 +16,17 @@ def home(request):
 
 
 def admin_login(request):
-    form = administrator_login_form()
 
+    form = administrator_login_form()
+  
     if request.method =="POST":
         form = administrator_login_form(request.POST)
         if form.is_valid():
             form.save()
 
     context = {'form': form}
-    return render(request, 'python_quiz/Admin_login.html', context)
+    return render(request, 'python_quiz/admin_signup.html', context)
+    
 
 def admin_details(request):
     administrator_details = administrator_login.objects.all
@@ -39,10 +41,25 @@ def delete_admin(request, admin_id):
 
 def update_admin(request, admin_id):
     data = administrator_login.objects.get(admin_id=admin_id)
-
     form = administrator_login_form(instance=data)
     context = {'form': form}
-    return render(request, 'python_quiz/Admin_login.html', context)
+    return render(request, 'python_quiz/admin_signup.html', context)
+
+def sign_in(request):
+    form = administrator_signin_form()
+  
+    if request.method =="POST":
+        form = administrator_login_form(request.POST)
+        if form.is_valid():
+            form.save()
+
+    context = {'form': form}
+    return render(request, 'python_quiz/admin_signup.html', context)
+
+
+
+    
+
 
 
 

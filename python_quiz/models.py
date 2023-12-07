@@ -13,3 +13,11 @@ class administrator_login(models.Model):
 
     def __str__(self):
         return self.firstname
+    
+class administrator_signin(models.Model):
+    admin_id = models.CharField(max_length=100, default=0)
+    email_id = models.EmailField(blank=True)
+    password = models.CharField(max_length=100, null=False)
+
+    def __str__(self):
+        return self.admin_id

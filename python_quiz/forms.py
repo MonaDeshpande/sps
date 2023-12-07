@@ -1,6 +1,6 @@
 from django import forms
 # from django.forms import ModelForm
-from .models import administrator_login
+from .models import administrator_login, administrator_signin
 
 class administrator_login_form(forms.ModelForm):
     class Meta:
@@ -16,6 +16,18 @@ class administrator_login_form(forms.ModelForm):
             'email_id':forms.EmailInput(attrs={'class':'form-control'}),
             'password':forms.PasswordInput(attrs={'class':'form-control'}),
             'reenter_password':forms.PasswordInput(attrs={'class':'form-control'})
+        }
+
+class administrator_sign_form(forms.ModelForm):
+    class Meta:
+        model = administrator_signin
+        # fields = ['firstname', 'lastname', 'admin_id', 'image', 'email_id', 'password', 'reenter_password']
+        fields = '__all__'
+        labels= { 'email_id': 'Email Id', 'Password': 'Password'}
+        widgets = {
+            'admin_id':forms.NumberInput(attrs={'class':'form-control'}),
+            'email_id':forms.EmailInput(attrs={'class':'form-control'}),
+            'password':forms.PasswordInput(attrs={'class':'form-control'}),
         }
 
     
