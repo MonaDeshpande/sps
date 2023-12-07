@@ -18,7 +18,7 @@ class administrator_login_form(forms.ModelForm):
             'reenter_password':forms.PasswordInput(attrs={'class':'form-control'})
         }
 
-class administrator_sign_form(forms.ModelForm):
+class administrator_signin_form(forms.ModelForm):
     class Meta:
         model = administrator_signin
         # fields = ['firstname', 'lastname', 'admin_id', 'image', 'email_id', 'password', 'reenter_password']

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 # from .models import *
-from .forms import administrator_login_form, administrator_sign_form
+from .forms import administrator_login_form, administrator_signin_form
 from .models import administrator_login,administrator_signin
 # from django.views import View
 
@@ -42,6 +42,12 @@ def delete_admin(request, admin_id):
 def update_admin(request, admin_id):
     data = administrator_login.objects.get(admin_id=admin_id)
     form = administrator_login_form(instance=data)
+
+    if request.method =="POST":
+        form = administrator_login_form(request.POST, instance=data)
+        if form.is_valid():
+            form.save()
+
     context = {'form': form}
     return render(request, 'python_quiz/admin_signup.html', context)
 
@@ -49,19 +55,29 @@ def sign_in(request):
     form = administrator_signin_form()
   
     if request.method =="POST":
-        form = administrator_login_form(request.POST)
+        form = administrator_signin_form(request.POST)
         if form.is_valid():
             form.save()
 
     context = {'form': form}
-    return render(request, 'python_quiz/admin_signup.html', context)
+    return render(request, 'python_quiz/admin_signin.html', context)
+
+def add_questions(request, admin_id):
+    form = administrator_signin_form()
+    Administrator_Signin= administrator_signin.objects.get(admin_id = admin_id)
+    email2 = Administrator_Signin.email_id
+    password2 =Administrator_Signin.password
+
+    form = administrator_login_form()
+    Administrator_Login= administrator_login.objects.get(admin_id = admin_id)
+    email1 = Administrator_Login.email_id
+    password1 =Administrator_Login.password
+
+    if email1 ==email2 and password1 == password2:
+        return redirect("/python_quiz/questions/")
+    else:
+        return HttpResponse("Email id or password doesnt match")
 
 
 
     
-
-
-
-
-
-
