@@ -15,10 +15,12 @@
             <div class="col-md-5 offset-md-3">
                 <div class="card bg-Primary-dark text-black" >
                     <div class="card-body">
-                        <form action="" method="post">
+                        <form action="/python_quiz/add_questions/{{administrator_detail.admin_id}}" method="post">
                             {% csrf_token %}
-                                <!-- {{ form.as_table }} -->
-                            {% for fm in form %}
+                            {{ form.as_table }}
+                            <h1>{{adminadmin_id}}</h1>
+                    
+                            {% comment %} {% for fm in form %}
                             <div class="form-group mb-3">
                                 {{fm.label_tag}}  {{fm}} <small class="text-danger"> {{fm.errors|striptags}} </small>
                             </div>
@@ -28,13 +30,13 @@
                                 {% for error in non_field_errors %}
                                     <p class="alert alert-danger my-3">{{error}}</p>
                                 {% endfor %}
-                            {% endif %}
+                            {% endif %} {% endcomment %}
 
                             {% comment %} <div class="d-grid gap-2">
                                 <input class="btn btn-primary" type="submit" href="/python_quiz/add_questions/{{administrator_detail.admin_id}}"  value="Submit" >
                             </div>  {% endcomment %}
                             <div class="d-grid gap-2">
-                                <input class="btn btn-primary" type = "submit" href= "/python_quiz/home" value="Signin" >
+                                <input class="btn btn-primary" type = "submit" href= "/python_quiz/add_questions/{{administrator_detail.admin_id}}" value="Signin" >
                             </div>                
                     </div>
                 </div>

@@ -59,7 +59,7 @@ def sign_in(request):
         if form.is_valid():
             form.save()
 
-    context = {'form': form}
+    context = {'form': form}   ADbjxjaxn
     return render(request, 'python_quiz/admin_signin.html', context)
 
 def add_questions(request, admin_id):
