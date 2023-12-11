@@ -21,3 +21,14 @@ class administrator_signin(models.Model):
 
     def __str__(self):
         return self.admin_id
+
+class administrator_questions(models.Model):
+    question = models.CharField(max_length=500, default=0)
+    option_A = models.CharField(max_length=100, null=False)
+    option_B = models.CharField(max_length=100, null=False)
+    option_C = models.CharField(max_length=100, null=False)
+    option_D = models.CharField(max_length=100, null=False)
+    correct_answer = models.CharField(max_length=100, null=False)
+
+    def __str__(self):
+        return self.question

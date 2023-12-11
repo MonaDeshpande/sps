@@ -12,7 +12,11 @@ urlpatterns = [
     path('delete/<str:email_id>', delete_admin),
     path('update/<str:email_id>', update_admin),
     path('signin/', sign_in),
-    path('add_questions/', add_questions)
+    path('add_questions/', add_questions),
+    path('questions/', questions),
+    path('question_details/', question_details),
+    path('question_delete/<str:question>', delete_question),
+    path('question_update/<str:question>', update_question),
     # path('admin/', views.formView.as_view(), name = 'home'),
     # path('admin/', formView),
     

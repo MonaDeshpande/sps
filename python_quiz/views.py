@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 # from .models import *
 from .forms import administrator_login_form, administrator_signin_form
-from .models import administrator_login,administrator_signin
+from .models import administrator_login,administrator_signin, administrator_questions
 # from django.views import View
 
 # Create your views here.
@@ -76,11 +76,58 @@ def add_questions(request):
 
         email_id2 = whole_Details.email_id
         password2 = whole_Details.password
+
         if email_id1 == email_id2 and password1 == password2:
-            return render
+            return render(request, "python_quiz/questions.html", {})
         else:
             return HttpResponse("Email id or password doesn't match")
+
+def questions(request):
+    if request.method =="POST":
+        Question = request.POST.get("question")
+        Option_A = request.POST.get("option_A")
+        Option_B = request.POST.get("option_B")
+        Option_C = request.POST.get("option_C")
+        Option_D = request.POST.get("option_D")
+        Correct_Answer = request.POST.get("correct_answer")
+
+        # Create model object and save data
+        Q=administrator_questions()
+        Q.question = Question
+        Q.option_A = Option_A
+        Q.option_B = Option_B
+        Q.option_C = Option_C
+        Q.option_D = Option_D
+        Q.correct_answer = Correct_Answer
+
+        #save data
+        Q.save()
+
+        return redirect ("/python_quiz/questions/")
+    print("data is not coming")
+    return render(request, "python_quiz/questions.html", {})
+
+def question_details(request):
+    question_details = administrator_questions.objects.all
+    return render (request, "python_quiz/question_details.html", {'question_details': question_details})
+
+def delete_question(request, question):
+    print(question)
+    x=administrator_questions.objects.get(question=question)
+    print(x)
+    x.delete()
+    return redirect("/python_quiz/question_details/")
+
+def update_question(request, question):
+     Administrator_Questions = administrator_questions.objects.get(pk=question)
+     print("update the data of this student")
+     return render(request, "students/update.html", {
+        'administrator_questions':Administrator_Questions
+    })
+
         
+
+
     
     
     
