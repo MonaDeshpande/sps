@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import administrator_login
+from .models import administrator_login,administrator_signin
 
 # Register your models here.
 class administratorAdmin(admin.ModelAdmin):
@@ -8,5 +8,15 @@ class administratorAdmin(admin.ModelAdmin):
 
 
 admin.site.register(administrator_login, administratorAdmin)
+
+class administrator_signinAdmin(admin.ModelAdmin):
+    list_display= ['admin_id', 'email_id', 'password']
+    # list_editable= ('admin_id', 'email_id')
+
+
+admin.site.register(administrator_signin, administrator_signinAdmin)
+
+
+
 
 

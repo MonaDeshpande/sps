@@ -32,15 +32,15 @@ def admin_details(request):
     administrator_details = administrator_login.objects.all
     return render (request, "python_quiz/admin_details.html", {'administrator_details': administrator_details})
 
-def delete_admin(request, admin_id):
-    print(admin_id)
-    x=administrator_login.objects.get(admin_id=admin_id)
+def delete_admin(request, email_id):
+    print(email_id)
+    x=administrator_login.objects.get(email_id=email_id)
     print(x)
     x.delete()
     return redirect("/python_quiz/home/")
 
-def update_admin(request, admin_id):
-    data = administrator_login.objects.get(admin_id=admin_id)
+def update_admin(request, email_id):
+    data = administrator_login.objects.get(email_id=email_id)
     form = administrator_login_form(instance=data)
 
     if request.method =="POST":
@@ -59,25 +59,30 @@ def sign_in(request):
         if form.is_valid():
             form.save()
 
-    context = {'form': form}   ADbjxjaxn
+    context = {'form': form}   
     return render(request, 'python_quiz/admin_signin.html', context)
 
-def add_questions(request, admin_id):
-    form = administrator_signin_form()
-    Administrator_Signin= administrator_signin.objects.get(admin_id = admin_id)
-    email2 = Administrator_Signin.email_id
-    password2 =Administrator_Signin.password
 
-    form = administrator_login_form()
-    Administrator_Login= administrator_login.objects.get(admin_id = admin_id)
-    email1 = Administrator_Login.email_id
-    password1 =Administrator_Login.password
+def add_questions(request):
+    if request.method =="POST":
+        email_id1 = request.POST.get("email_id")
+        password1 = request.POST.get("password")
+        AL= administrator_login()
 
-    if email1 ==email2 and password1 == password2:
-        return redirect("/python_quiz/questions/")
-    else:
-        return HttpResponse("Email id or password doesnt match")
+        try:
+            whole_Details = administrator_login.objects.get(email_id = email_id1)
+        except:
+            HttpResponse("Enter correct email address")
 
-
-
+        email_id2 = whole_Details.email_id
+        password2 = whole_Details.password
+        if email_id1 == email_id2 and password1 == password2:
+            return render
+        else:
+            return HttpResponse("Email id or password doesn't match")
+        
     
+    
+    
+    
+        

@@ -6,7 +6,7 @@ class administrator_login(models.Model):
     lastname = models.CharField(max_length=20, null=False)
     admin_id = models.CharField(max_length=100, null=False)
     image = models.ImageField(upload_to="administrator_login/", blank=True)
-    email_id = models.EmailField(blank=True)
+    email_id = models.EmailField(blank=True, primary_key= True)
     password = models.CharField(max_length=100, null=False)
     reenter_password = models.CharField(max_length=100, null=False)
     
