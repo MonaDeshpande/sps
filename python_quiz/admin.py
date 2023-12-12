@@ -18,7 +18,7 @@ admin.site.register(administrator_signin, administrator_signinAdmin)
 
 class administrator_questionsAdmin(admin.ModelAdmin):
     list_display= ['question', 'option_A', 'option_B', 'option_C', 'option_D']
-    # list_editable= ('admin_id', 'email_id')
+    # list_editable= ('question', 'option_A', 'option_B', 'option_C', 'option_D')
 
 
 admin.site.register(administrator_questions, administrator_questionsAdmin)

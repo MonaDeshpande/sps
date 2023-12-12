@@ -119,9 +119,9 @@ def delete_question(request, question):
     return redirect("/python_quiz/question_details/")
 
 def update_question(request, question):
-     Administrator_Questions = administrator_questions.objects.get(pk=question)
+     Administrator_Questions = administrator_questions.objects.get(question=question)
      print("update the data of this student")
-     return render(request, "students/update.html", {
+     return render(request, "python_quiz/update.html", {
         'administrator_questions':Administrator_Questions
     })
 

@@ -7,13 +7,13 @@
     <title>Adding questions</title>
 </head>
 <body>
-    <h1 >Admin can add there  questions here</h1>
+    <h1 >Admin can update theire questions here</h1>
     <div class="container">
         <div class="row">
             <div class="col-md-5 offset-md-3">
                 <div class="card bg-Primary-dark text-black" >
                     <div class="card-body">
-                        <form action="/python_quiz/questions/" method="POST">
+                        <form action="/python_quiz/update_questions/" method="POST">
                             {% csrf_token %}
                             <div>
                                 <label for="question"> Question</label>
@@ -48,9 +48,8 @@
                             <div class="d-grid gap-2">
                                 <input class="btn btn-primary" type="submit" href="/python_quiz/question_details.html/"  value="Submit" >
                                 </div>
-                                <br>
                             <div class="d-grid gap-2">
-                                <a class="btn btn-primary" type="submit" href="/python_quiz/question_details"  value="Submit" >
+                                <a class="btn btn-primary" href="/python_quiz/question_details"  value="Submit" >
                                 </div>
                      </div>
                 </div>
