@@ -25,7 +25,6 @@ class administrator_signin_form(forms.ModelForm):
         fields = '__all__'
         labels= { 'email_id': 'Email Id', 'Password': 'Password'}
         widgets = {
-            'admin_id':forms.NumberInput(attrs={'class':'form-control'}),
             'email_id':forms.EmailInput(attrs={'class':'form-control'}),
             'password':forms.PasswordInput(attrs={'class':'form-control'}),
         }

@@ -15,8 +15,10 @@ urlpatterns = [
     path('add_questions/', add_questions),
     path('questions/', questions),
     path('question_details/', question_details),
-    path('question_delete/<str:question>', delete_question),
-    path('question_update/<str:question>', update_question)
+    path('question_delete/<int:id>', delete_question),
+    path('question_update/<int:id>', update_question),
+    path('do_update_question/', do_update_question),
+
     # path('admin/', views.formView.as_view(), name = 'home'),
     # path('admin/', formView),
     

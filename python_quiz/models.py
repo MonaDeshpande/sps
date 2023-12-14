@@ -15,20 +15,20 @@ class administrator_login(models.Model):
         return self.firstname
     
 class administrator_signin(models.Model):
-    admin_id = models.CharField(max_length=100, default=0)
-    email_id = models.EmailField(blank=True)
+    email_id = models.EmailField(blank=True, primary_key = True)
     password = models.CharField(max_length=100, null=False)
 
     def __str__(self):
-        return self.admin_id
+        return self.email_id
 
 class administrator_questions(models.Model):
-    question = models.CharField(max_length=500, default=None, primary_key=True)
+    id =models.IntegerField(default=None, primary_key=True, null=False)
+    question = models.CharField(max_length=500, default=None)
     option_A = models.CharField(max_length=100, null=False)
     option_B = models.CharField(max_length=100, null=False)
     option_C = models.CharField(max_length=100, null=False)
     option_D = models.CharField(max_length=100, null=False)
-    correct_answer = models.CharField(max_length=100)
+    correct_answer = models.CharField(max_length=100, null = False)
 
     def __str__(self):
-        return self.questionpython 
+        return self.question

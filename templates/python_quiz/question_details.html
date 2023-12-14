@@ -29,6 +29,7 @@
                                 {% for question in question_details %}
                                 <tr>
                                     <td>{{forloop.counter}}</td>
+                                    <td>{{question.id}}</td>
                                     <td>{{question.question}}</td>         
                                     <td>{{question.option_A}}</td>
                                     <td>{{question.option_B}}</td>
@@ -38,8 +39,8 @@
                                         
                         
                                     <td>
-                                        <a class = "btn btn-danger" href="/python_quiz/question_delete/{{question.question}}">DELETE</a>
-                                        <a class = "btn btn-primary" href="/python_quiz/question_update/{{question.question}}">UPDATE</a>   
+                                        <a class = "btn btn-danger" href="/python_quiz/question_delete/{{question.id}}">DELETE</a>
+                                        <a class = "btn btn-primary" href="/python_quiz/question_update/{{question.id}}">UPDATE</a>   
                                         
                                     </td>
                                 </tr>   

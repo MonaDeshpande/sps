@@ -10,7 +10,7 @@ class administratorAdmin(admin.ModelAdmin):
 admin.site.register(administrator_login, administratorAdmin)
 
 class administrator_signinAdmin(admin.ModelAdmin):
-    list_display= ['admin_id', 'email_id', 'password']
+    list_display= ['email_id', 'password']
     # list_editable= ('admin_id', 'email_id')
 
 

@@ -84,6 +84,7 @@ def add_questions(request):
 
 def questions(request):
     if request.method =="POST":
+        id = request.POST.get("id")
         Question = request.POST.get("question")
         Option_A = request.POST.get("option_A")
         Option_B = request.POST.get("option_B")
@@ -93,6 +94,7 @@ def questions(request):
 
         # Create model object and save data
         Q=administrator_questions()
+        Q.id= id
         Q.question = Question
         Q.option_A = Option_A
         Q.option_B = Option_B
@@ -111,19 +113,46 @@ def question_details(request):
     question_details = administrator_questions.objects.all
     return render (request, "python_quiz/question_details.html", {'question_details': question_details})
 
-def delete_question(request, question):
-    print(question)
-    x=administrator_questions.objects.get(question=question)
+def delete_question(request, id):
+    print(id)
+    # return HttpResponse(question)
+    x=administrator_questions.objects.get(pk= id)
     print(x)
     x.delete()
     return redirect("/python_quiz/question_details/")
 
-def update_question(request, question):
-     Administrator_Questions = administrator_questions.objects.get(question=question)
-     print("update the data of this student")
-     return render(request, "python_quiz/update.html", {
-        'administrator_questions':Administrator_Questions
+def update_question(request, id):
+    x = administrator_questions.objects.get(pk=id)
+    #return HttpResponse(x)
+    print("update the data of this student")
+    return render(request, "python_quiz/questions_update.html", {
+        'administrator_questions':x
     })
+def do_update_question(request):
+    if request.method =="POST":
+        Question = request.POST.get("question")
+        Option_A = request.POST.get("option_A")
+        Option_B = request.POST.get("option_B")
+        Option_C = request.POST.get("option_C")
+        Option_D = request.POST.get("option_D")
+        Correct_Answer = request.POST.get("correct_answer")
+
+        # Create model object and save data
+        Q=administrator_questions()
+        Q.id= id
+        Q.question = Question
+        Q.option_A = Option_A
+        Q.option_B = Option_B
+        Q.option_C = Option_C
+        Q.option_D = Option_D
+        Q.correct_answer = Correct_Answer
+
+        #save data
+        Q.save()
+
+        return redirect ("/python_quiz/questions/")
+    print("data is not coming")
+    return render(request, "python_quiz/questions.html", {})
 
         
 

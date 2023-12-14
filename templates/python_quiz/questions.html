@@ -16,6 +16,10 @@
                         <form action="/python_quiz/questions/" method="POST">
                             {% csrf_token %}
                             <div>
+                                <label for="id"> id</label>
+                                <input type="number" id="id" class="form-control" name="ID" placeholder="Type your question id here">
+                            </div>
+                            <div>
                                 <label for="question"> Question</label>
                                 <input type="text" id="question" class="form-control" name="question" placeholder="Type your question here">
                             </div>
@@ -39,10 +43,10 @@
                                 <!-- <label for="option_D"> option_D</label> -->
                                 <input type="text" id="option_D" class="form-control" name="option_D" placeholder="option D">
                             </div>
-                    
+                            <br>
                             <div>
-                                <label for="Correct_Answer">"Correct Answer</label>
-                                <input type="text" id="Correct_Answer" class="form-control" name="Correct_Answer" placeholder="Correct Answer">
+                                <!-- <label for="Correct_Answer">"Correct Answer</label> -->
+                                <input type="text" id="correct_answer" class="form-control" name="correct_answer" placeholder="Correct Answer">
                             </div>
                             <hr>
                             <div class="d-grid gap-2">
