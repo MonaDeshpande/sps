@@ -18,6 +18,11 @@ urlpatterns = [
     path('question_delete/<int:id>', delete_question),
     path('question_update/<int:id>', update_question),
     path('do_update_question/<int:id>', do_update_question),
+    path('students_signup/', student_signup),
+    path('student_details/', student_details),
+    path('delete/<str:email_id>', delete_student),
+    path('update/<str:email_id>', update_student),
+    path('signin_student/', signin_student),
 
     # path('admin/', views.formView.as_view(), name = 'home'),
     # path('admin/', formView),

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 # from .models import *
-from .forms import administrator_login_form, administrator_signin_form
-from .models import administrator_login,administrator_signin, administrator_questions
+from .forms import administrator_login_form, administrator_signin_form,students_signup_form,student_signin_form
+from .models import administrator_login,administrator_signin, administrator_questions,students_signup,student_signin
 # from django.views import View
 
 # Create your views here.
@@ -152,6 +152,72 @@ def do_update_question(request, id):
         return redirect ("/python_quiz/questions/")
     print("data is not coming")
     return render(request, "python_quiz/questions.html", {})
+
+def student_signup(request):
+
+    form = students_signup_form()
+  
+    if request.method =="POST":
+        form = students_signup_form(request.POST)
+        if form.is_valid():
+            form.save()
+
+    context = {'form': form}
+    return render(request, 'python_quiz/student_signup.html', context)
+    
+def student_details(request):
+    student_details = student_details.objects.all
+    return render (request, "python_quiz/student_details.html", {'student_details': student_details})
+
+def delete_admin(request, email_id):
+    print(email_id)
+    x=administrator_login.objects.get(email_id=email_id)
+    print(x)
+    x.delete()
+    return redirect("/python_quiz/home/")
+
+def update_admin(request, email_id):
+    data = administrator_login.objects.get(email_id=email_id)
+    form = administrator_login_form(instance=data)
+
+    if request.method =="POST":
+        form = administrator_login_form(request.POST, instance=data)
+        if form.is_valid():
+            form.save()
+
+    context = {'form': form}
+    return render(request, 'python_quiz/admin_signup.html', context)
+
+def signin_student(request):
+    form = student_signin_form()
+  
+    if request.method =="POST":
+        form = student_signin_form(request.POST)
+        if form.is_valid():
+            form.save()
+
+    context = {'form': form}   
+    return render(request, 'python_quiz/student_signin.html', context)
+
+def delete_student(request, email_id):
+    print(email_id)
+    x=student_signup.objects.get(email_id=email_id)
+    print(x)
+    x.delete()
+    return redirect("/python_quiz/home/")
+
+def update_student(request, email_id):
+    data = student_signup.objects.get(email_id=email_id)
+    form = students_signup_form(instance=data)
+
+    if request.method =="POST":
+        form = students_signup_form(request.POST, instance=data)
+        if form.is_valid():
+            form.save()
+
+    context = {'form': form}
+    return render(request, 'python_quiz/student_signup.html', context)
+
 
         
 

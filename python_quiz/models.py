@@ -32,3 +32,23 @@ class administrator_questions(models.Model):
 
     def __str__(self):
         return self.question
+
+class students_signup(models.Model):
+    firstname = models.CharField(max_length=20, null=False)
+    lastname = models.CharField(max_length=20, null=False)
+    student_id = models.CharField(max_length=100, null=False)
+    image = models.ImageField(upload_to="administrator_login/", blank=True)
+    email_id = models.EmailField(blank=True, primary_key= True)
+    password = models.CharField(max_length=100, null=False)
+    reenter_password = models.CharField(max_length=100, null=False)
+    
+
+    def __str__(self):
+        return self.firstname
+
+class student_signin(models.Model):
+    email_id = models.EmailField(blank=True, primary_key = True)
+    password = models.CharField(max_length=100, null=False)
+
+    def __str__(self):
+        return self.email_id
