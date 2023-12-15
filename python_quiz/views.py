@@ -110,6 +110,7 @@ def questions(request):
     return render(request, "python_quiz/questions.html", {})
 
 def question_details(request):
+    #return HttpResponse("Hello its working")
     question_details = administrator_questions.objects.all
     return render (request, "python_quiz/question_details.html", {'question_details': question_details})
 
@@ -123,12 +124,10 @@ def delete_question(request, id):
 
 def update_question(request, id):
     x = administrator_questions.objects.get(pk=id)
-    #return HttpResponse(x)
-    print("update the data of this student")
-    return render(request, "python_quiz/questions_update.html", {
-        'administrator_questions':x
-    })
-def do_update_question(request):
+    # return HttpResponse(x.question)
+    return render(request, "python_quiz/questions_update.html", {'administrator_question':x})
+
+def do_update_question(request, id):
     if request.method =="POST":
         Question = request.POST.get("question")
         Option_A = request.POST.get("option_A")
