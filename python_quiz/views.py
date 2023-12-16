@@ -4,8 +4,11 @@ from django.http import HttpResponse
 from .forms import administrator_login_form, administrator_signin_form,students_signup_form,student_signin_form
 from .models import administrator_login,administrator_signin, administrator_questions,students_signup,student_signin
 # from django.views import View
+#create a list to keep the record of question id
+question_id =[1, 3, 4]
 
 # Create your views here.
+
 def home(request):
     Administrator_login= administrator_login.objects.all()
     #will bring student in dictionary
@@ -49,7 +52,7 @@ def update_admin(request, email_id):
             form.save()
 
     context = {'form': form}
-    return render(request, 'python_quiz/admin_signup.html', context)
+    return render(request, 'python_quiz/admin_login.html', context)
 
 def sign_in(request):
     form = administrator_signin_form()
@@ -67,10 +70,10 @@ def add_questions(request):
     if request.method =="POST":
         email_id1 = request.POST.get("email_id")
         password1 = request.POST.get("password")
-        AL= administrator_login()
+        AL= administrator_login
 
         try:
-            whole_Details = administrator_login.objects.get(email_id = email_id1)
+            whole_Details = AL.objects.get(email_id = email_id1)
         except:
             HttpResponse("Enter correct email address")
 
@@ -101,9 +104,10 @@ def questions(request):
         Q.option_C = Option_C
         Q.option_D = Option_D
         Q.correct_answer = Correct_Answer
-
         #save data
         Q.save()
+
+        question_id.append[id]
 
         return redirect ("/python_quiz/questions/")
     print("data is not coming")
@@ -166,27 +170,29 @@ def student_signup(request):
     return render(request, 'python_quiz/student_signup.html', context)
     
 def student_details(request):
-    student_details = student_details.objects.all
+    student_details = students_signup.objects.all()
     return render (request, "python_quiz/student_details.html", {'student_details': student_details})
 
-def delete_admin(request, email_id):
+def delete_student(request, email_id):
     print(email_id)
-    x=administrator_login.objects.get(email_id=email_id)
+    x=student_signup.objects.get(email_id=email_id)
     print(x)
     x.delete()
     return redirect("/python_quiz/home/")
 
-def update_admin(request, email_id):
-    data = administrator_login.objects.get(email_id=email_id)
-    form = administrator_login_form(instance=data)
+def update_student(request, email_id):
+    #return HttpResponse("done")
+    data = students_signup.objects.get(email_id=email_id)
+    form = students_signup_form(instance=data)
 
     if request.method =="POST":
-        form = administrator_login_form(request.POST, instance=data)
+        form = students_signup_form(request.POST, instance=data)
         if form.is_valid():
             form.save()
 
     context = {'form': form}
-    return render(request, 'python_quiz/admin_signup.html', context)
+
+    return render(request, 'python_quiz/student_signup.html', context)
 
 def signin_student(request):
     form = student_signin_form()
@@ -198,25 +204,29 @@ def signin_student(request):
 
     context = {'form': form}   
     return render(request, 'python_quiz/student_signin.html', context)
+def random_question(request):
+    que_id = administrator_questions.objects.filter().values_list('id', flat=True)
+    import random
+    que_to_display = random.choice(que_id)
+    que =administrator_questions.objects.get(pk=que_to_display)
+    # return HttpResponse(x)
+    return render(request, "python_quiz/exam.html", {'que': que})
 
-def delete_student(request, email_id):
-    print(email_id)
-    x=student_signup.objects.get(email_id=email_id)
-    print(x)
-    x.delete()
-    return redirect("/python_quiz/home/")
+def selected_answer(request):
+    selected_answer= request.POST.getlist("checks[]")
+    return HttpResponse(selected_answer)
 
-def update_student(request, email_id):
-    data = student_signup.objects.get(email_id=email_id)
-    form = students_signup_form(instance=data)
 
-    if request.method =="POST":
-        form = students_signup_form(request.POST, instance=data)
-        if form.is_valid():
-            form.save()
+    
 
-    context = {'form': form}
-    return render(request, 'python_quiz/student_signup.html', context)
+def exam(request):
+    question= administrator_questions.objects.all()
+    
+    # import random
+    # que= random.randint(1, question.id)
+    return HttpResponse(question)
+    # question = administrator_questions.objects.get(pk=que)
+    # return HttpResponse(question)
 
 
         

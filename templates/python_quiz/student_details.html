@@ -18,7 +18,7 @@
                                     <th>Sr No</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
-                                    <th>Admin_id</th>
+                                    <th>Student_id</th>
                                     <th>Image</th>
                                     <th>email_id</th>
                                     <th>Action</th>
@@ -26,19 +26,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for administrator_detail in administrator_details %}
+                                {% for student_detail in student_details %}
                                 <tr>
                                     <td>{{forloop.counter}}</td>
-                                    <td>{{administrator_detail.firstname}}</td>         
-                                    <td>{{administrator_detail.lastname}}</td>
-                                    <td>{{administrator_detail.admin_id}}</td>
-                                    <td>{{administrator_detail.image}}</td>
-                                    <td>{{administrator_detail.email_id}}</td>
+                                    <td>{{student_detail.firstname}}</td>         
+                                    <td>{{student_detail.lastname}}</td>
+                                    <td>{{student_detail.student_id}}</td>
+                                    <td>{{student_detail.image}}</td>
+                                    <td>{{student_detail.email_id}}</td>
                                         
                         
                                     <td>
-                                        <a class = "btn btn-danger" href="/python_quiz/delete/{{administrator_detail.email_id}}">DELETE</a>
-                                        <a class = "btn btn-primary" href="/python_quiz/update/{{administrator_detail.email_id}}">UPDATE</a>   
+                                        <a class = "btn btn-danger" href="/python_quiz/student_delete/{{student_detail.email_id}}">DELETE</a>
+                                        <a class = "btn btn-primary" href="/python_quiz/student_update/{{student_detail.email_id}}">UPDATE</a>   
                                         
                                     </td>
                                 </tr>   

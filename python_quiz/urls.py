@@ -20,9 +20,12 @@ urlpatterns = [
     path('do_update_question/<int:id>', do_update_question),
     path('students_signup/', student_signup),
     path('student_details/', student_details),
-    path('delete/<str:email_id>', delete_student),
-    path('update/<str:email_id>', update_student),
-    path('signin_student/', signin_student),
+    path('student_delete/<str:email_id>', delete_student),
+    path('student_update/<str:email_id>', update_student),
+    path('student_signin/', signin_student),
+    path('random_question/', random_question),
+    path('selected_ans/', selected_answer),
+
 
     # path('admin/', views.formView.as_view(), name = 'home'),
     # path('admin/', formView),
