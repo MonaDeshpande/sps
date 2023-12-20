@@ -204,21 +204,77 @@ def signin_student(request):
 
     context = {'form': form}   
     return render(request, 'python_quiz/student_signin.html', context)
+# def random_question(request):
+#     que_id = administrator_questions.objects.filter().values_list('id', flat=True)
+#     import random
+#     que_to_display = random.choice(que_id)
+#     que =administrator_questions.objects.get(pk=que_to_display)
+#     # return HttpResponse(x)
+#     return render(request, "python_quiz/exam.html", {'que': que})
 def random_question(request):
+    global que_id
+    global whole_details
+    global que
+    global options
     que_id = administrator_questions.objects.filter().values_list('id', flat=True)
     import random
     que_to_display = random.choice(que_id)
-    que =administrator_questions.objects.get(pk=que_to_display)
-    # return HttpResponse(x)
-    return render(request, "python_quiz/exam.html", {'que': que})
+    whole_details =administrator_questions.objects.get(pk=que_to_display)
+    que = whole_details.question
+    options ={
+        "A" :whole_details.option_A,
+        "B" : whole_details.option_B,
+        "C" : whole_details.option_C,
+        "D" : whole_details.option_D
+    }
+    
+    context = {
+        'que': que,
+        'options':options
+        }
+        
+    return render(request, "python_quiz/questionnaire.html", context)
 
 def selected_answer(request):
-    selected_answer= request.POST.getlist("checks[]")
-    return HttpResponse(selected_answer)
+    if request.method =="POST":
+        if 'submit' in request.POST:
+            if request.POST.get('options'):
+                vi= request.POST.get('options')
+                print(vi)
+                vi = str(vi)
+                # return HttpResponse(vi)
+        
+            right_ans = whole_details.correct_answer
+            if vi ==right_ans:
+                result= "Your answer is right"
+            else:
+                result = "Your answer is wrong"
+            context = {
+            'que': que,
+            'options':options,
+            'result':result
+            }
+            return render(request, "python_quiz/questionnaire.html", context)
+        if 'new' in request.POST:
+            random_question()
 
-
+        # selected_option = request.POST.getlist('options')
+        # if selected_option =="A" and correct_answer =="A":
+        #     result ="Your answer is right"
+        #     # return HttpResponse(result)
+        # elif selected_option =="B" and correct_answer =="B":
+        #     result ="Your answer is right"
+        #     # return HttpResponse(result)
+        # elif selected_option =="C" and correct_answer =="C":
+        #     result ="Your answer is right"
+        #     # return HttpResponse(result)
+        # elif selected_option =="D" and correct_answer =="D":
+        #     result ="Your answer is right"
+        #     # return HttpResponse(result)
+        # else:
+        #     result ="Your answer is right"
+        #     # return HttpResponse(result)
     
-
 def exam(request):
     question= administrator_questions.objects.all()
     
